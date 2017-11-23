@@ -105,9 +105,6 @@ public class Solver {
 	}
 
 	public boolean checkBox(int rad, int kolum) {
-		// tex rad = 1 > i börjar på (0/3)*3= 0
-		// rad = 4 > i börjar på (3/3)*3= 3
-		// rad = 9 > i börjar på (8/3)*3= 6
 		for (int i = 3 * (rad / 3); i <= 3 * (rad / 3) + 2; i++) {
 			for (int j = 3 * (kolum / 3); j <= 3 * (kolum / 3) + 2; j++) {
 				if (rad != i && kolum != j) {

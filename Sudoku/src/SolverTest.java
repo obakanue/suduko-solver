@@ -7,20 +7,21 @@ import org.junit.Test;
 
 public class SolverTest {
     Solver testSolver;
-    int[][] puzzle;
+    int[][] setUp;
     int[][] solvedPuzzle;
+    
     @Before
     public void setUp() throws Exception {
         int[][] setUp 
-            = {     { 0, 0, 0, 2, 6, 0, 7, 0, 1 },
-                    { 6, 8, 0, 0, 7, 0, 0, 9, 0 },
-                    { 1, 9, 0, 0, 0, 4, 5, 0, 0 },
-                    { 8, 2, 0, 1, 0, 0, 0, 4, 0 },
-                    { 0, 0, 4, 6, 0, 2, 9, 0, 0 },
-                    { 0, 5, 0, 0, 0, 3, 0, 2, 8 },
-                    { 0, 0, 9, 3, 0, 0, 0, 7, 4 },
-                    { 0, 3, 0, 0, 5, 0, 0, 3, 6 },
-                    { 7, 0, 3, 0, 1, 8, 0, 0, 0 }
+            = {     { 5, 0, 0, 0, 1, 0, 0, 0, 4 },
+                    { 2, 7, 4, 0, 0, 0, 6, 0, 0 },
+                    { 0, 8, 0, 9, 0, 4, 0, 0, 0 },
+                    { 8, 1, 0, 4, 6, 0, 3, 0, 2 },
+                    { 0, 0, 2, 0, 3, 0, 1, 0, 0 },
+                    { 7, 0, 6, 0, 9, 1, 0, 5, 8 },
+                    { 0, 0, 0, 5, 0, 3, 0, 1, 0 },
+                    { 0, 0, 5, 0, 0, 0, 9, 2, 7 },
+                    { 1, 0, 0, 0, 2, 0, 0, 0, 3 }
             };
         int[][] solvedSetUp  
                 = {     { 9, 5, 4, 8, 7, 2, 3, 1, 6 },
@@ -33,15 +34,22 @@ public class SolverTest {
                         { 4, 1, 5, 3, 2, 9, 6, 8, 7 },
                         { 6, 7, 3, 4, 1, 8, 9, 5, 2 }
                 };
-        solvedPuzzle = solvedSetUp;
-        puzzle = setUp;
+        this.solvedPuzzle = solvedSetUp;
+        this.setUp = setUp;
     }
+    
     @After
     public void tearDown() throws Exception {
         testSolver = new Solver(new int[9][9]);
     }
     
     @Test
+    public final void testSudokuSolver() {
+    	testSolver = new Solver(setUp);
+    	assertTrue(testSolver.solve());
+    }
+    
+	@Test
     public final void testCheckRulesRow() {
         testSolver = new Solver(solvedPuzzle);
         for (int i = 0; i < 9 ; i++){
